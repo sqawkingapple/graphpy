@@ -1,12 +1,34 @@
 import pygame, graph, easygui
 
+xinterval = 0.05
+ymax = 10
+xmax = 10
+
 def startup():
+
     easygui.msgbox("Welcome to GraphyPy!", title="Graphpy", ok_button = "Ok, Let's Explore!")
     if easygui.buttonbox("Would you like to read the help text?", choices = ["Yes","No"]) == "Yes":
         easygui.msgbox("Type in an equation in the input box and click Graph to graph! Click Settings to change settings.")
 
 def main():
-    if easygui.buttonbox("Would you like to graph a function or go into settings?", title = "Graph or Settings", choices = ["Graphing","Settings"]) == "Graphing":
-        input = easygui.enterbox("Enter your function here: ", title = "GraphPy", ok_button = "Graph")
-    elif easygui.buttonbox("Would you like to graph a function or go into settings?", title = "Graph or Settings", choices = ["Graphing","Settings"]) == "Settings":
-        settings_input = easygui.choicebox("Settings","Settings",["X Interval", "Y Interval", "X Max", "Y Max"])
+
+    global xinterval, yinterval, ymax, xmax
+    initial = easygui.buttonbox("Would you like to graph a function or go into settings?", title = "Graph or Settings", choices = ["Graphing","Settings"])
+    cxinterval = xinterval
+    cymax = ymax
+    cxmax = xmax
+    if initial == "Graphing":
+        input = easygui.enterbox("Enter your function here: ", title = "GraphPy")
+        graph.Graph(ymax, xmax, xinterval, input)
+    elif initial == None:
+        exit()
+    else:
+        settings_input = easygui.choicebox("Settings","Settings",["X Interval", "X Max", "Y Max"])
+        if settings_input == "X Interval":
+            xinterval = float(easygui.enterbox("Current value: %s Enter value: " % cxinterval))
+        elif settings_input == "X Max":
+            xmax = float(easygui.enterbox("Current value: %s Enter value: " % cxmax))
+        elif settings_input == "Y Max":
+            ymax = float(easygui.enterbox("Current value: %s Enter value: " % cymax))
+        main()
+    run += 1
