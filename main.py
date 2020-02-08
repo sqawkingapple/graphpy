@@ -1,1 +1,3 @@
-import tkinter, pygame, gui
+import pygame, gui, graph, easygui
+
+gui.main()
