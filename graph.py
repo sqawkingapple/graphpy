@@ -1,14 +1,15 @@
 import pygame, gui, easygui, sys, random, math
 
-def Graph(xmax, ymax, xinterval, function):
+def Graph(w, h, xmax, ymax, xinterval, function):
 
+    w = int(w)
+    h = int(h)
     stop = False
     x = -xmax
     testx = x - xinterval
     pygame.init()
     fps = 120
     clock = pygame.time.Clock()
-    w, h = 500, 500
     display = pygame.display.set_mode((w,h))
     xaxis = pygame.Surface((w,1))
     yaxis = pygame.Surface((1,h))
@@ -19,7 +20,7 @@ def Graph(xmax, ymax, xinterval, function):
 
     if "sine" in function:
         function = function.replace("sine", "math.sin")
-        
+
     while True:
 
         tempfunction = list(function)

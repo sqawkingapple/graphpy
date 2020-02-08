@@ -3,6 +3,7 @@ import pygame, graph, easygui, sys
 xinterval = 0.05
 ymax = 10
 xmax = 10
+w, h = 500, 500
 
 def startup():
 
@@ -12,16 +13,16 @@ def startup():
 
 def main():
 
-    global xinterval, yinterval, ymax, xmax
+    global xinterval, yinterval, ymax, xmax, w, h
     initial = easygui.buttonbox("Would you like to graph a function or go into settings?", title = "Graph or Settings", choices = ["Graphing","Settings"])
     cxinterval = xinterval
     cymax = ymax
     cxmax = xmax
     if initial == "Graphing":
         input = easygui.enterbox("Enter your function here: ", title = "GraphPy")
-        graph.Graph(ymax, xmax, xinterval, input)
+        graph.Graph(w, h, ymax, xmax, xinterval, input)
     elif initial == "Settings":
-        settings_input = easygui.choicebox("Settings","Settings",["X Interval", "X Max", "Y Max"])
+        settings_input = easygui.choicebox("Settings","Settings",["X Interval", "X Max", "Y Max", "Window Width", "Window Height"])
         if settings_input == "X Interval":
             try:
                 xinterval = float(easygui.enterbox("Current value: %s Enter value: " % cxinterval))
@@ -35,6 +36,16 @@ def main():
         elif settings_input == "Y Max":
             try:
                 ymax = float(easygui.enterbox("Current value: %s Enter value: " % cymax))
+            except:
+                print()
+        elif settings_input == "Window Width":
+            try:
+                w = float(easygui.enterbox("Current value: %s Enter value: " % w))
+            except:
+                print()
+        elif settings_input == "Window Height":
+            try:
+                h = float(easygui.enterbox("Current value: %s Enter value: " % h))
             except:
                 print()
         main()
