@@ -1,4 +1,4 @@
-import pygame, graph, easygui
+import pygame, graph, easygui, sys
 
 xinterval = 0.05
 ymax = 10
@@ -20,15 +20,24 @@ def main():
     if initial == "Graphing":
         input = easygui.enterbox("Enter your function here: ", title = "GraphPy")
         graph.Graph(ymax, xmax, xinterval, input)
-    elif initial == None:
-        exit()
-    else:
+    elif initial == "Settings":
         settings_input = easygui.choicebox("Settings","Settings",["X Interval", "X Max", "Y Max"])
         if settings_input == "X Interval":
-            xinterval = float(easygui.enterbox("Current value: %s Enter value: " % cxinterval))
+            try:
+                xinterval = float(easygui.enterbox("Current value: %s Enter value: " % cxinterval))
+            except:
+                print()
         elif settings_input == "X Max":
-            xmax = float(easygui.enterbox("Current value: %s Enter value: " % cxmax))
+            try:
+                xmax = float(easygui.enterbox("Current value: %s Enter value: " % cxmax))
+            except:
+                print()
         elif settings_input == "Y Max":
-            ymax = float(easygui.enterbox("Current value: %s Enter value: " % cymax))
+            try:
+                ymax = float(easygui.enterbox("Current value: %s Enter value: " % cymax))
+            except:
+                print()
         main()
+    else:
+        sys.exit()
     run += 1

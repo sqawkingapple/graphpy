@@ -1,4 +1,4 @@
-import pygame, gui, easygui, sys, random
+import pygame, gui, easygui, sys, random, math
 
 def Graph(xmax, ymax, xinterval, function):
 
@@ -17,6 +17,9 @@ def Graph(xmax, ymax, xinterval, function):
     display.blit(xaxis, (0,h//2))
     display.blit(yaxis, (w//2,0))
 
+    if "sine" in function:
+        function = function.replace("sine", "math.sin")
+        
     while True:
 
         tempfunction = list(function)
@@ -34,12 +37,12 @@ def Graph(xmax, ymax, xinterval, function):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
+                gui.main()
         if stop == False: x += xinterval
         testx = x - xinterval
         if x >= xmax:
             stop = True
         if stop == True:
             fps = 10
-        print((int(x*(w//2/xmax)+w//2),int(y*-(h//2/ymax)+h//2)))
         pygame.display.flip()
         clock.tick(fps)
