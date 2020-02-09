@@ -6,10 +6,12 @@ xmax = 10
 w, h = 500, 500
 
 def startup():
-
+    """
     easygui.msgbox("Welcome to GraphyPy!", title="Graphpy", ok_button = "Ok, Let's Explore!")
     if easygui.buttonbox("Would you like to read the help text?", choices = ["Yes","No"]) == "Yes":
         easygui.msgbox("Type in an equation in the input box and click Graph to graph! Click Settings to change settings.")
+    """
+    pass
 
 def main():
 
